@@ -1,6 +1,6 @@
 #include "Form.hpp"
 
-Form::Form() : name("default"), grade_sign(2) , grade_execute(1)
+Form::Form() : name("default"), grade_sign(2) , grade_execute(5)
 {
     this->boolean = false;
 }
@@ -51,7 +51,7 @@ std::ostream& operator<<(std::ostream& os, const Form& fx)
 
 void Form::beSigned(Bureaucrat &obj)
 {
-    if (obj.getGrade() <=  this->grade_sign)
+    if (obj.getGrade() <=  this->grade_sign && obj.getGrade() <= this->grade_execute)
         this->boolean = true;
     else
         throw GradeTooLowException();
