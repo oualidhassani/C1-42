@@ -1,5 +1,15 @@
 #include "Form.hpp"
 
+const char* Form::GradeTooHighException::what() const throw()
+{
+    return "Need a grader too high to sign form";
+}
+
+const char* Form::GradeTooLowException::what() const throw()
+{
+    return "Need a grader too low to sign form";
+}
+
 Form::Form() : name("default"), grade_sign(2) , grade_execute(5)
 {
     this->boolean = false;
