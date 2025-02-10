@@ -1,30 +1,21 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
+
 int main()
 {
     try 
     {
-        // Shrubbery test
-        ShrubberyCreationForm f("home");
-        Bureaucrat b("b", 1);
-        b.signForm(f);          // Use bureaucrat to sign the form
-        b.executeForm(f);       // Use bureaucrat to execute the form, not direct call
-        
-        // Robotomy test
-        RobotomyRequestForm r("office");
-        b.signForm(r);         // Use bureaucrat to sign, not form's method
-        b.executeForm(r);
+            Intern someRandomIntern;
+            AForm* rrf;
+            rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 
-        // Presidential test
-        PresidentialPardonForm p("jail");
-        b.signForm(p);
-        b.executeForm(p);
+            std::cout << rrf->get_name() << std::endl;
     }
-    catch(const std::exception& e)
+    catch(const char* errorMessage)
     {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << "Error , the form not existing ";
     }
 
-    return 0;
 }
