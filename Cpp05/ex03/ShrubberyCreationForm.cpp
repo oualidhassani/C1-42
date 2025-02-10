@@ -54,7 +54,7 @@ void ShrubberyCreationForm::execute_Shrubbery() const
     if(this->grade_sign < 1)
         throw GradeTooHighException();
 
-    std::ofstream obj(this->get_name_Shrubbery(), std::ios::out);
+    std::ofstream obj(this->get_name_Shrubbery().c_str(), std::ios::out);
 
     if(!obj.is_open())
         std::cerr << "fail to open the file" << std::endl;

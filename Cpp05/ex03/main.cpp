@@ -9,9 +9,11 @@ int main()
     {
             Intern someRandomIntern;
             AForm* rrf;
-            rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+            rrf = someRandomIntern.makeForm("robotdsadomy request", "Bender");
 
             std::cout << rrf->get_name() << std::endl;
+
+            delete rrf;
     }
     catch(const char* errorMessage)
     {
