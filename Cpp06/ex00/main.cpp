@@ -2,8 +2,6 @@
 
 int main(int ac, char **av)
 {
-    // ScalarConverter obj;
-
     if (ac != 2)
 	{
 		std::cerr << "One Argument required." << std::endl;
