@@ -3,7 +3,8 @@
 #include <vector>
 #include <iostream>
 template <typename T>
-void easyfind(T obj, int i)
+
+void easyfind(T &obj, int i)
 {
     typename T::iterator it = std::find(obj.begin(), obj.end(), i);
 
