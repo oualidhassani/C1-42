@@ -23,6 +23,8 @@ int main(int ac, char **av)
 
     BitcoinExchange exchange;
 
+    std::string data = "data.csv";
+    exchange.load_data(data);
     read_line(file, exchange);
     
     file.close();
