@@ -2,6 +2,7 @@
 #define PMERGEME_HPP
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 class PmergeMe 
 {
@@ -12,6 +13,9 @@ class PmergeMe
         PmergeMe(const PmergeMe &other);
         PmergeMe& operator=(const PmergeMe &other);
         ~PmergeMe();
+        void addnum(int num);
+        void sort(std::vector<int> &vec);
+
 };
 
 
