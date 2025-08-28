@@ -73,5 +73,5 @@ int main(int ac, char **av)
             return 1;
         }
 
-    
+    pmerge.sort(pmerge.getvec());
 }

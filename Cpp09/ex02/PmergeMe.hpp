@@ -15,6 +15,9 @@ class PmergeMe
         ~PmergeMe();
         void addnum(int num);
         void sort(std::vector<int> &vec);
+        std::vector<int> &getvec();
+        void Step2(std::vector<int> &vec);
+
 
 };
 
