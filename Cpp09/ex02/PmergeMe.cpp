@@ -101,49 +101,47 @@ void Step1(std::vector<int> &vec)
     }
 }
 
+
 void PmergeMe::Step2(std::vector<int> &vec)
 {
     if (vec.size() <= 1) return;
     
-    std::vector<int> main_chain;
-    std::vector<int> pending;
+    std::vector<int> larger_pair;
+    std::vector<int> smaller_pair;
     
-    // Handle the straggler (odd element) if exists
-    int straggler = -1;
-    bool has_straggler = (vec.size() % 2 == 1);
-    if (has_straggler) {
-        straggler = vec.back();
+    int odd_num = -1;
+    bool has_odd_num = (vec.size() % 2 == 1);
+    if (has_odd_num) 
+    {
+        odd_num = vec.back();
         vec.pop_back();
     }
     
-    // Separate into main chain (larger elements) and pending (smaller elements)
     for(size_t i = 0; i < vec.size(); i += 2)
     {
-        main_chain.push_back(vec[i + 1]); // larger element goes to main chain
-        pending.push_back(vec[i]);        // smaller element goes to pending
+        larger_pair.push_back(vec[i + 1]);
+        smaller_pair.push_back(vec[i]);
     }
     
-    // Start with an empty sorted sequence and insert the first element of main_chain
     std::vector<int> sorted_sequence;
-    if (!main_chain.empty()) {
-        sorted_sequence.push_back(main_chain[0]);
+    if (!larger_pair.empty()) 
+    {
+        sorted_sequence.push_back(larger_pair[0]);
     }
     
-    // Insert pending elements in order (each pending[i] is smaller than main_chain[i])
-    // We know pending[0] < main_chain[0], so it goes at the beginning
-    for (size_t i = 0; i < pending.size(); i++) 
+    for (size_t i = 0; i < smaller_pair.size(); i++) 
     {
-        binary_insertion(sorted_sequence, pending[i]);
+        binary_insertion(sorted_sequence, smaller_pair[i]);
         
-        // Then insert the corresponding main_chain element (if not already inserted)
-        if (i + 1 < main_chain.size()) {
-            binary_insertion(sorted_sequence, main_chain[i + 1]);
+        if (i + 1 < larger_pair.size()) 
+        {
+            binary_insertion(sorted_sequence, larger_pair[i + 1]);
         }
     }
     
-    // Insert straggler if it exists
-    if (has_straggler) {
-        binary_insertion(sorted_sequence, straggler);
+    if (has_odd_num) 
+    {
+        binary_insertion(sorted_sequence, odd_num);
     }
     
     vec = sorted_sequence;
@@ -154,13 +152,21 @@ void PmergeMe::sort(std::vector<int> &vec)
 
     if(vec.size() <= 1)
         return ; 
+    std::cout << "Before: ";
+    for(size_t i = 0; i < vec.size() ; i++)
+    {
+        std::cout  << vec[i] << " ";
+    }
+    
+    clock_t start = clock();
     
     Step1(vec);
     Step2(vec);
+    std::cout << std::endl << "After: ";
     for(size_t i = 0; i < vec.size() ; i++)
     {
         std::cout << vec[i] << " ";
     }
-
+    std::cout << std::endl;
 }
 
