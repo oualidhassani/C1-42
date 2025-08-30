@@ -4,6 +4,7 @@
 void PmergeMe::addnum(int num)
 {
     vec.push_back(num);
+    deq.push_back(num);
 }
 
 bool isValidNumber(const std::string& str)
@@ -74,4 +75,5 @@ int main(int ac, char **av)
         }
 
     pmerge.sort(pmerge.getvec());
+    pmerge.sort_deq(pmerge.getdeq());
 }

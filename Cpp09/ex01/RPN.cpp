@@ -89,12 +89,11 @@ void RPN::process_input(std::string &input)
         }
         else if (isOperator(push_me))
         {
-            if(_stack.size() < 2)
+            if(_stack.size() < 2 )
             {
                 std::cerr << "error need more than 2 arguments ";
                 return ;
             }
-
             int op2 = _stack.top() ; 
             _stack.pop();
             int op1 = _stack.top();

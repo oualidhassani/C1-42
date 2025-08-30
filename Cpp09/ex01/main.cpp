@@ -4,7 +4,7 @@ int main(int ac, char **av)
 {
     if(ac != 2)
     {
-        std::cerr << "enter the right number of arguments" << std::endl;
+        std::cerr << "Please provide the argument as one string " << std::endl;
         return -1;
     }
     RPN rpn;
